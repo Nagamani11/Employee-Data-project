@@ -1,0 +1,97 @@
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% include 'cdnlines.html' %}
+    <title></title>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="container-fluid text-center">
+      <div class="row">
+        <div class="col-md-2">
+          <a href="{% url 'banglore' %}" class="btn btn-primary mt-1">Banglore</a>
+        </div>
+        <div class="col-md-8">
+          <h2 class="text-center">Welcome to Chennai City</h2>
+        </div>
+        <div class="col-md-2">
+          <a href="{% url "mumbai" %}" class="btn btn-success mt-1">Mumbai</a>
+        </div>
+      </div>
+    </div>
+    <!-- image code-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{% static 'images/chennai.jpeg' %}" alt="image"style="border-radius:3%" height="40%" width="100%" class="img-thumbnail">
+          <h4 class="text-center">Madras High Court in chennai</h4>
+        </div>
+        <div class="col-md-4">
+          <img src="{% static 'images/chennai1.jpeg' %}" alt="image"style="border-radius:2%" height="30%" width="100%" class="img-thumbnail">
+          <h4 class="text-center">MGR Memorial</h4>
+        </div>
+        <div class="col-md-4">
+          <img src="{% static 'images/chennai4.jpeg' %}" alt="image"style="border-radius:3%" height="30%" width="100%" class="img-thumbnail">
+          <h4 class="text-center">Senate House</h4>
+        </div>
+      </div>
+    </div>
+
+    <!--searchbar-->
+    <div class="search-container text-center mb-4">
+      <form method="POST">
+        {% csrf_token %}
+        <input type="text"  placeholder="Search.." name="company">
+        <input type="submit" value="Submit" class="btn btn-info">
+      </form>
+    </div>
+
+    <!--table data-->
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <h4 class="text-center">Chennai Employees!!!</h4>
+                    {% if data %}
+                        <table class="table table-bordered text-center">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Full Name</th>
+                                    <th>Salary</th>
+                                    <th>Company</th>
+                                    <th>Email</th>
+                                    <th>Location</th>
+                                    <th>Home Town</th>
+                                    <th>Qualification</th>
+                                    <th>Skill</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in data %}
+                                <tr>
+                                    <td>{{ i.id }}</td>
+                                    <td>{{ i.first_name }} {{ i.last_name }}</td>
+                                    <td>{{ i.salary }}</td>
+                                    <td>{{ i.company }}</td>
+                                    <td>{{ i.email }}</td>
+                                    <td>{{ i.location }}</td>
+                                    <td>{{ i.home_town }}</td>
+                                    <td>{{ i.qualification }}</td>
+                                    <td>{{ i.skill }}</td>
+                                    <td>{{ i.percentage }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <h2 class="text-center">No Data Available Here!!!</h2>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav">
+  <li class = "nav-item active">
+    <a class="navbar-brand text-white" href="{% url 'mainPage' %}">MainPage</a>
+    </li>
+  <li class="nav-item active">
+    <a class="nav-link Home text-white" href="{% url 'hyderabad' %}">Hyderabad</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link Contact text-white" href="{% url 'banglore' %}">Banglore</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link Services text-white" href="{% url 'chennai' %}">Chennai</a>
+</li>
+<li class="nav-item">
+<a class="nav-link Feedback text-white" href="{% url 'mumbai' %}">Mumbai</a>
+</li>
+<li class="nav-item">
+<a class="nav-link Gallery text-white" href="{% url 'delhi' %}">Delhi</a><br>
+</li>
+</ul>
+</div>
+</nav>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Title</title>
+    {% include 'cdnlines.html' %}
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <a href="{% url 'mainPage' %}" class="btn btn-primary mt-1">MainPage</a>
+          <a href="{% url 'mainPage' %}"></a>
+          <h4 class="text-center">{{ data.first_name }}Hyderabad Employees Data!!!</h4>
+          <!--searchbar-->
+          <div class="search-container text-center mb-4">
+            <form method="POST">
+              {% csrf_token %}
+              <input type="text"  placeholder="Search.." name="company">
+              <input type="submit" value="Submit" class="btn btn-info">
+            </form>
+          </div>
+
+              {% if data %}
+              <table class="text-center table table-bordered">
+                <thead class="bg-info">
+                  <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Salary</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Location</th>
+                    <th>Home Town</th>
+                    <th>Qualification</th>
+                    <th>Skill </th>
+                    <th>Percentage</th>
+                  </tr>
+                </thead>
+              <tbody>
+                {% for i in data %}
+                  <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.first_name}} {{data.last_name}}</td>
+                    <td>{{i.salary}}</td>
+                    <td>{{i.company}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.location}}</td>
+                    <td>{{i.home_town}}</td>
+                    <td>{{i.qualification}}</td>
+                    <td>{{i.skill}}</td>
+                    <td>{{i.percentage}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <h2 class="text-center">No Data Available Here!!!</h2>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+  </body>
+</html>
